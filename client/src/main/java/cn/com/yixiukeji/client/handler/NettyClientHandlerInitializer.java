@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.Resource;
 
 @Component
-public   class NettyClientHandlerInitializer extends ChannelInitializer<Channel> {
+public class NettyClientHandlerInitializer extends ChannelInitializer<Channel> {
     /**
      * 心跳超时时间
      */
@@ -22,7 +22,7 @@ public   class NettyClientHandlerInitializer extends ChannelInitializer<Channel>
     @Resource
     private MessageDispatcher messageDispatcher;
     @Resource
-    private NettyClientHandler  nettyClientHandler;
+    private NettyClientHandler nettyClientHandler;
 
     /**
      * @param ch 此时创建的客户端 Channel

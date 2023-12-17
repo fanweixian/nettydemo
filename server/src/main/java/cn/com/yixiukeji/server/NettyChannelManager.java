@@ -1,10 +1,10 @@
 package cn.com.yixiukeji.server;
 
+import cn.com.yixiukeji.codec.Invocation;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelId;
 import io.netty.util.AttributeKey;
 import lombok.extern.slf4j.Slf4j;
-import org.aopalliance.intercept.Invocation;
 import org.springframework.stereotype.Component;
 
 import java.util.concurrent.ConcurrentHashMap;

@@ -2,12 +2,12 @@ package cn.com.yixiukeji.client;
 
 
 import cn.com.yixiukeji.client.handler.NettyClientHandlerInitializer;
+import cn.com.yixiukeji.codec.Invocation;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import lombok.extern.slf4j.Slf4j;
-import org.aopalliance.intercept.Invocation;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 

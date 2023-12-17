@@ -1,8 +1,9 @@
 package cn.com.yixiukeji.message.heartbeat;
 
+import cn.com.yixiukeji.dispacher.Message;
 import lombok.Data;
 
 @Data
-public class HeartbeatResponse {
+public class HeartbeatResponse implements Message {
     public final static String TYPE = "HeartbeatResponse";
 }

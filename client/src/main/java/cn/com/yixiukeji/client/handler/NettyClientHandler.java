@@ -1,13 +1,14 @@
 package cn.com.yixiukeji.client.handler;
 
 import cn.com.yixiukeji.client.NettyClient;
+import cn.com.yixiukeji.codec.Invocation;
 import cn.com.yixiukeji.message.heartbeat.HeartbeatRequest;
 import com.alibaba.fastjson.JSON;
 import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
-import io.netty.handler.timeout.IdleStateHandler;
+import io.netty.handler.timeout.IdleStateEvent;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -43,10 +44,10 @@ public   class NettyClientHandler extends ChannelInboundHandlerAdapter {
      */
     @Override
     public void userEventTriggered(ChannelHandlerContext ctx, Object evt) throws Exception {
-        if (evt instanceof IdleStateHandler) {
+        if (evt instanceof IdleStateEvent) {
             log.info("[userEventTriggered][发起一次心跳]");
             HeartbeatRequest heartbeatRequest = new HeartbeatRequest();
-            ctx.writeAndFlush(new cn.com.yixiukeji.codec.Invocation(HeartbeatRequest.TYPE, JSON.toJSONString(heartbeatRequest)))
+            ctx.writeAndFlush(new Invocation(HeartbeatRequest.TYPE,  heartbeatRequest))
                     .addListener(ChannelFutureListener.CLOSE_ON_FAILURE);
         } else {
             super.userEventTriggered(ctx, evt);

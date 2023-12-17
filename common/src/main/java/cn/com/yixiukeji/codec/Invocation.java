@@ -1,5 +1,7 @@
 package cn.com.yixiukeji.codec;
 
+import cn.com.yixiukeji.dispacher.Message;
+import com.alibaba.fastjson2.JSON;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,4 +21,9 @@ public class Invocation {
      * json格式
      */
     private String message;
+
+    public Invocation(String type, Message message) {
+        this.type = type;
+        this.message = JSON.toJSONString(message);
+    }
 }

@@ -18,14 +18,14 @@ public class MessageDispatcher extends SimpleChannelInboundHandler<Invocation> {
     private MessageHandlerContainer messageHandlerContainer;
 
     @Override
-    protected void channelRead0(ChannelHandlerContext ctxx, Invocation invocation) throws Exception {
+    protected void channelRead0(ChannelHandlerContext ctx, Invocation invocation) throws Exception {
         MessageHandler messageHandler = messageHandlerContainer.getMessageHandler(invocation.getType());
 
         Class<? extends Message> messageClass = MessageHandlerContainer.getMessageClass(messageHandler);
 
         Message message = JSON.parseObject(invocation.getMessage(), messageClass);
 
-        executorService.submit(() -> messageHandler.execute(ctxx.channel(), message));
+        executorService.submit(() -> messageHandler.execute(ctx.channel(), message));
 
     }
 }
